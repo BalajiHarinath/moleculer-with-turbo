@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  nats:
+    image: nats:latest
+    container_name: nats-server
+    restart: always
+    ports:
+      - "4222:4222"
+
+  user-service:
+    build:
+      context: .
+      dockerfile: apps/user-service/Dockerfile
+    container_name: user-service
+    restart: always
+    env_file:
+      - ./apps/user-service/.env
+    environment:
+      NATS_URL: "nats://nats:4222"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - nats
+
+  email-service:
+    build:
+      context: .
+      dockerfile: apps/email-service/Dockerfile
+    container_name: email-service
+    restart: always
+    env_file:
+      - ./apps/email-service/.env
+    environment:
+      NATS_URL: "nats://nats:4222"
+    ports:
+      - "3001:3001"
+    depends_on:
+      - nats
