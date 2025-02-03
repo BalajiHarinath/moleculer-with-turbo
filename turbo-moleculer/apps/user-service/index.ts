@@ -5,14 +5,14 @@ import userCreatedEvent from './src/events/userCreated';
 
 const broker = new ServiceBroker({
     nodeID: 'user-service',
-    transporter: process.env.NATS_URL || 'NATS',
+    transporter: 'nats://nats:4222',
 });
 
 broker.createService({
     name: 'user',
     mixins: [ApiService],
     settings: {
-        port: 3002,
+        port: 3000,
     },
     actions: {
         addUser: addUserAction,

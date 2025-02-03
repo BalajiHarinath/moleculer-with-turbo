@@ -5,14 +5,14 @@ import handleUserCreatedEvent from './src/events/handleUserCreated';
 
 const broker = new ServiceBroker({
     nodeID: 'email-service',
-    transporter: process.env.NATS_URL || 'NATS',
+    transporter: 'nats://nats:4222',
 });
 
 broker.createService({
     name: 'email',
     mixins: [ApiService],
     settings: {
-        port: 3003,
+        port: 3001,
     },
     actions: {
         sendGreetingEmail: sendGreetingEmailAction
