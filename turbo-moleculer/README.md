@@ -4,6 +4,7 @@ This repository is a Turborepo-based monorepo that houses microservices built wi
 
 ## Project Structure
 
+```
  turbo-moleculer/
  |-- apps/
  |   |-- user-service/        # Handles user-related operations
@@ -17,6 +18,7 @@ This repository is a Turborepo-based monorepo that houses microservices built wi
  |-- turbo.json               # Turborepo configuration
  |-- docker-compose.yml       # Docker setup for services
  |-- README.md                # Project documentation
+```
 
 ## Services
 
