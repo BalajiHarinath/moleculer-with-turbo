@@ -24,4 +24,4 @@ CMD ["npm", "run", "build"]
 FROM node:latest AS runner
 WORKDIR /app
 COPY --from=builder /app/ .
-CMD ["npm", "run", "dev"]
+CMD ["node", "apps/user-service/dist/index.js"]
