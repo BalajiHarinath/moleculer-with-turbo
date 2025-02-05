@@ -29,7 +29,8 @@
         "typescript": "^5.7.3",
         "@repo/typescript-config": "*",
         "@repo/common-types": "*",
-        "@repo/error-handler": "*"
+        "@repo/error-handler": "*",
+        "@repo/email-helper": "*"
     }
   }
   

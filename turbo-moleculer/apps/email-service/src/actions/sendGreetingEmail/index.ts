@@ -1,8 +1,7 @@
-import { ErrorResponse } from '@repo/common-types';
+import { ErrorResponse, UserData } from '@repo/common-types';
+import { getGreetingEmailBody, getGreetingEmailSubject } from '@repo/email-helper';
 import { errorHandler } from "@repo/error-handler";
 import { Context, Errors } from 'moleculer';
-import { getGreetingEmailBody, getGreetingEmailSubject } from '../../helpers/email-helper';
-import { UserData } from '../../types/user.types';
 import sendEmail from '../../utils/node-mailer';
 
 const { MoleculerError } = Errors;

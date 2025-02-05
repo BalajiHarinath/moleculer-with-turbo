@@ -1,4 +1,4 @@
-import { UserData } from "../types/user.types";
+import { UserData } from "@repo/common-types";
 
 export function getGreetingEmailSubject(): string{
     return 'Welcome to Our Platform';
