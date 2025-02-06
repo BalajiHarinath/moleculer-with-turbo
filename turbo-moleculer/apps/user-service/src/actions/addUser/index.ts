@@ -6,7 +6,9 @@ import { UserInput } from '../../types/user.types';
 export default {
     async handler(ctx: Context<UserInput>){
         try{
-            return UserService.addUser(ctx);
+            const response = await UserService.addUser(ctx.params);
+            await ctx.emit('user.created', ctx.params);
+            return response;
         }catch(err: any){
             return errorHandler(err);
         }

@@ -1,14 +1,12 @@
-import { Context } from 'moleculer';
-import { UserInput, UserInputSchema } from '../types/user.types';
+import { ErrorResponse, SuccessResponse } from '@repo/common-types';
 import { errorHandler } from '@repo/error-handler';
-import { ErrorResponse } from '@repo/common-types';
+import { UserInput, UserInputSchema } from '../types/user.types';
 
 export const UserService = {
-    async addUser(ctx: Context<UserInput>): Promise<{ success: boolean; message: string; status: number } | ErrorResponse>{
+    async addUser(input: UserInput): Promise<SuccessResponse | ErrorResponse>{
         try{
-            const input = UserInputSchema.parse(ctx.params);
+            UserInputSchema.parse(input);
             /* Some DB operations to add the user */
-            await ctx.emit('user.created', input);
             return {success: true, message: 'User created successfully', status: 200};
         }catch(err: any){
             return errorHandler(err);
