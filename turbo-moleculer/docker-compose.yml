@@ -16,8 +16,6 @@ services:
     restart: always
     env_file:
       - ./apps/user-service/.env
-    environment:
-      NATS_URL: "nats://nats:4222"
     ports:
       - "3000:3000"
     depends_on:
@@ -31,8 +29,6 @@ services:
     restart: always
     env_file:
       - ./apps/email-service/.env
-    environment:
-      NATS_URL: "nats://nats:4222"
     ports:
       - "3001:3001"
     depends_on:

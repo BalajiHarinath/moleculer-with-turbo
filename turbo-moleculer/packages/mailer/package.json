@@ -1,0 +1,16 @@
+{
+    "name": "@repo/mailer",
+    "version": "0.0.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.7",
+        "moleculer": "^0.14.35",
+        "nodemailer": "^6.10.0",
+        "zod": "^3.24.1",
+        "@repo/common-types": "*"
+    }
+}

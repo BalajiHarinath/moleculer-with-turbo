@@ -19,18 +19,19 @@
       "moleculer-web": "^0.10.7",
       "nats": "^2.29.1",
       "nodemailer": "^6.10.0",
-      "nodemon": "^3.1.9",
-      "zod": "^3.24.1"
+      "zod": "^3.24.1",
+      "ts-node": "^10.9.2",
+      "@types/node": "^22.13.0",
+      "@types/nodemailer": "^6.4.17",
+      "typescript": "^5.7.3",
+      "@repo/typescript-config": "*",
+      "@repo/common-types": "*",
+      "@repo/error-handler": "*",
+      "@repo/email-helper": "*",
+      "@repo/mailer": "*"
     },
     "devDependencies": {
-        "ts-node": "^10.9.2",
-        "@types/node": "^22.13.0",
-        "@types/nodemailer": "^6.4.17",
-        "typescript": "^5.7.3",
-        "@repo/typescript-config": "*",
-        "@repo/common-types": "*",
-        "@repo/error-handler": "*",
-        "@repo/email-helper": "*"
+        "nodemon": "^3.1.9"
     }
   }
   

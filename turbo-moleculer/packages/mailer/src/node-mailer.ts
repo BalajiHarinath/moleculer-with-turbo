@@ -3,7 +3,8 @@ import { Errors } from 'moleculer';
 import nodemailer from 'nodemailer';
 import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { ZodError } from 'zod';
-import { EmailPayload, EmailPayloadSchema, MailOptions } from '../types/nodemailer.types';
+import { EmailPayload, EmailPayloadSchema, MailOptions } from '@repo/common-types';
+const { MoleculerError } = Errors;
 
 config();
 function getMailOptions(email: string, subject: string, body: string): MailOptions{
@@ -30,8 +31,7 @@ function createTransporter(){
     return transporter;
 }
 
-export default async function sendEmail(emailPayload: EmailPayload, MoleculerError: typeof Errors.MoleculerError
-): Promise<{message: string}>{
+export default async function sendEmail(emailPayload: EmailPayload): Promise<{message: string}>{
     try {
         const { email, subject, body } = EmailPayloadSchema.parse(emailPayload);
         const transporter = createTransporter();
