@@ -1,7 +1,7 @@
-import { ErrorResponse, SuccessResponse, UserData } from '@repo/common-types';
+import { ErrorResponse, SuccessResponse, UserData, EmailProvider } from '@repo/common-types';
 import { getGreetingEmailBody, getGreetingEmailSubject } from '@repo/email-helper';
 import { sendEmail } from '@repo/mailer';
-import { errorHandler } from '@repo/error-handler';
+import { ZodError } from 'zod';
 
 export const EmailService = {
     async sendGreetingEmail(input: UserData): Promise<SuccessResponse | ErrorResponse> {
@@ -9,11 +9,12 @@ export const EmailService = {
             const subject = getGreetingEmailSubject();
             const body = getGreetingEmailBody(input);
     
-            await sendEmail({ email: input.email, subject, body });
+            await sendEmail({ email: input.email, subject, body, provider: EmailProvider.SMTP });
 
             return { success: true, message: 'Email sent successfully' };
         } catch (err: any) {
-            return errorHandler(err);
+            if (err instanceof ZodError) throw err;
+            else throw new Error(err);
         }
     }
 }
