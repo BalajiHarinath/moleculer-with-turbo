@@ -7,10 +7,11 @@
         "build": "tsc"
     },
     "dependencies": {
+        "@repo/common-types": "*",
+        "@sendgrid/mail": "^8.1.4",
         "dotenv": "^16.4.7",
         "moleculer": "^0.14.35",
         "nodemailer": "^6.10.0",
-        "zod": "^3.24.1",
-        "@repo/common-types": "*"
+        "zod": "^3.24.1"
     }
 }

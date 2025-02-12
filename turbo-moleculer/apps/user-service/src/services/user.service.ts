@@ -1,5 +1,5 @@
 import { ErrorResponse, SuccessResponse } from '@repo/common-types';
-import { errorHandler } from '@repo/error-handler';
+import { ZodError } from 'zod';
 import { UserInput, UserInputSchema } from '../types/user.types';
 
 export const UserService = {
@@ -9,7 +9,8 @@ export const UserService = {
             /* Some DB operations to add the user */
             return {success: true, message: 'User created successfully', status: 200};
         }catch(err: any){
-            return errorHandler(err);
+            if (err instanceof ZodError) throw err;
+            else throw new Error(err);
         }
     }
 }
