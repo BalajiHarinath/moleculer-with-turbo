@@ -18,10 +18,10 @@ FROM node:latest AS builder
 WORKDIR /app
 COPY --from=installer /app/ .
 COPY --from=pruner /app/out/full .
-CMD ["npm", "run", "build"]
+RUN npm run build
 
 # Stage 4: Run the service
 FROM node:latest AS runner
 WORKDIR /app
 COPY --from=builder /app/ .
-CMD ["node", "apps/email-service/dist/index.js"]
+CMD ["node", "apps/email-service/dist/index"]
